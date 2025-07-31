@@ -1,3 +1,6 @@
+"use client";
+import * as highlightjs from "highlight.js";
+
 const ReadAllItems = () => {
   return (
     <div>
