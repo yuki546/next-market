@@ -25,7 +25,7 @@ const ReadAllItems = async () => {
   return (
     <div>
       {allItems.map((item: Item) => (
-        <Link href="" key={item.id}>
+        <Link href={`/item/readsingle/${item.id}`} key={item.id}>
           <Image
             src={item.image}
             width={750}
