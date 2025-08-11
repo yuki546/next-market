@@ -1,3 +1,5 @@
+import { JWTPayload } from "jose";
+
 export interface PageProps {
   params: Promise<{ id: string }>;
 }
@@ -9,4 +11,8 @@ export interface SingleItem {
   price: string;
   image: string;
   description: string;
+}
+
+export interface CustomJWTPayload extends JWTPayload {
+  email: string;
 }

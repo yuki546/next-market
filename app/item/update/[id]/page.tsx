@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { PageProps } from "@/types";
+import useAuth from "@/app/utils/useAuth";
 
 const UpdateItem = ({ params }: PageProps) => {
   const [title, setTitle] = useState("");
@@ -12,6 +13,7 @@ const UpdateItem = ({ params }: PageProps) => {
   const [email, setEmail] = useState("");
 
   const router = useRouter();
+  const loginUserEmail = useAuth();
 
   useEffect(() => {
     const getSingleItem = async (id: string) => {
@@ -52,7 +54,7 @@ const UpdateItem = ({ params }: PageProps) => {
             price: price,
             image: image,
             description: description,
-            email: "ダミーデータ",
+            email: loginUserEmail,
           }),
         }
       );
@@ -64,54 +66,58 @@ const UpdateItem = ({ params }: PageProps) => {
     }
   };
 
-  return (
-    <div>
-      <h1>アイテム編集</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={title}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setTitle(e.target.value)
-          }
-          type="text"
-          name="title"
-          placeholder="アイテム名"
-          required
-        />
-        <input
-          value={price}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setPrice(e.target.value)
-          }
-          type="text"
-          name="price"
-          placeholder="価格"
-          required
-        />
-        <input
-          value={image}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setImage(e.target.value)
-          }
-          type="text"
-          name="image"
-          placeholder="画像"
-          required
-        />
-        <textarea
-          value={description}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-            setDescription(e.target.value)
-          }
-          name="description"
-          rows={15}
-          placeholder="商品説明"
-          required
-        ></textarea>
-        <button>編集</button>
-      </form>
-    </div>
-  );
+  if (loginUserEmail === email) {
+    return (
+      <div>
+        <h1>アイテム編集</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            value={title}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setTitle(e.target.value)
+            }
+            type="text"
+            name="title"
+            placeholder="アイテム名"
+            required
+          />
+          <input
+            value={price}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPrice(e.target.value)
+            }
+            type="text"
+            name="price"
+            placeholder="価格"
+            required
+          />
+          <input
+            value={image}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setImage(e.target.value)
+            }
+            type="text"
+            name="image"
+            placeholder="画像"
+            required
+          />
+          <textarea
+            value={description}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              setDescription(e.target.value)
+            }
+            name="description"
+            rows={15}
+            placeholder="商品説明"
+            required
+          ></textarea>
+          <button>編集</button>
+        </form>
+      </div>
+    );
+  } else {
+    return <h1>権限がありません</h1>;
+  }
 };
 
 export default UpdateItem;
