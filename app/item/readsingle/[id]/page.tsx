@@ -1,17 +1,5 @@
 import Image from "next/image";
-
-interface PageProps {
-  params: Promise<{ id: string }>;
-}
-
-interface SingleItem {
-  created_at: string;
-  id: string;
-  title: string;
-  price: string;
-  image: string;
-  description: string;
-}
+import { PageProps, SingleItem } from "@/types";
 
 const getSingleItem = async (id: string): Promise<SingleItem> => {
   const response = await fetch(
