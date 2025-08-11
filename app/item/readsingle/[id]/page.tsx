@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PageProps, SingleItem } from "@/types";
+import Link from "next/link";
 
 const getSingleItem = async (id: string): Promise<SingleItem> => {
   const response = await fetch(
@@ -29,6 +30,10 @@ const ReadSingleItem = async ({ params }: PageProps) => {
         <h2>¥{singleItem.price}</h2>
         <hr />
         <p>{singleItem.description}</p>
+        <div>
+          <Link href={`/item/update/${singleItem.id}`}>アイテム編集</Link>
+          <Link href={`/item/delete/${singleItem.id}`}>アイテム削除</Link>
+        </div>
       </div>
     </div>
   );
