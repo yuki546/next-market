@@ -15,7 +15,7 @@ const ReadSingleItem = async ({ params }: PageProps) => {
   const { id } = await params;
   const singleItem = await getSingleItem(id);
   return (
-    <div>
+    <div className="grid-container-si">
       <div>
         <Image
           src={singleItem.image}
