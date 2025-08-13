@@ -2,7 +2,7 @@ import Image from "next/image";
 import { PageProps, SingleItem } from "@/types";
 import Link from "next/link";
 
-const getSingleItem = async (id: string): Promise<SingleItem> => {
+export const getSingleItem = async (id: string): Promise<SingleItem> => {
   const response = await fetch(
     `http://localhost:3000/api/item/readsingle/${id}`
   );
