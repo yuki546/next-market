@@ -1,5 +1,5 @@
 import { PageProps } from "@/types";
-import { getSingleItem } from "../../readsingle/[id]/page";
+import { getSingleItem } from "@/app/utils/api";
 import Form from "./form";
 
 const UpdateItem = async ({ params }: PageProps) => {

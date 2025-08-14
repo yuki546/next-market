@@ -1,15 +1,7 @@
 import Image from "next/image";
-import { PageProps, SingleItem } from "@/types";
+import { PageProps } from "@/types";
 import Link from "next/link";
-
-export const getSingleItem = async (id: string): Promise<SingleItem> => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/item/readsingle/${id}`
-  );
-  const jsonData = await response.json();
-  const singleItem = await jsonData.singleItem;
-  return singleItem;
-};
+import { getSingleItem } from "@/app/utils/api";
 
 const ReadSingleItem = async ({ params }: PageProps) => {
   const { id } = await params;

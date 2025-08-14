@@ -1,6 +1,6 @@
 import { PageProps } from "@/types";
-import { getSingleItem } from "../../readsingle/[id]/page";
 import Form from "./form";
+import { getSingleItem } from "@/app/utils/api";
 
 const DeleteItem = async ({ params }: PageProps) => {
   const { id } = await params;
