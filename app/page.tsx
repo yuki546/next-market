@@ -14,7 +14,9 @@ interface Item {
 }
 
 const getAllItems = async () => {
-  const response = await fetch("http://localhost:3000/api/item/readall");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/item/readall`
+  );
   const jsonData = await response.json();
   const allItems = jsonData.allItems;
   return allItems;

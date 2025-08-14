@@ -15,7 +15,7 @@ const DeleteItem = (props: ItemFormProps) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/item/delete/${id}`,
+        `${process.env.NEXT_PUBLIC_URL}/api/item/delete/${id}`,
         {
           method: "DELETE",
           headers: {

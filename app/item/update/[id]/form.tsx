@@ -13,7 +13,7 @@ const UpdateItem = (props: ItemFormProps) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/item/update/${id}`,
+        `${process.env.NEXT_PUBLIC_URL}/api/item/update/${id}`,
         {
           method: "PUT",
           headers: {
