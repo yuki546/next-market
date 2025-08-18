@@ -3,8 +3,19 @@ import { PageProps } from "@/types";
 import Link from "next/link";
 import { getSingleItem } from "@/app/utils/api";
 
+export async function generateMetadata({ params }: PageProps) {
+  const { id } = await params;
+  const singleItem = await getSingleItem(id);
+
+  return {
+    title: singleItem.title,
+    description: singleItem.description,
+  };
+}
+
 const ReadSingleItem = async ({ params }: PageProps) => {
   const { id } = await params;
+
   const singleItem = await getSingleItem(id);
   return (
     <div className="grid-container-si">
