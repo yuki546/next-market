@@ -22,3 +22,7 @@ export interface ItemFormProps {
   params: PageProps["params"];
   singleItem: SingleItem;
 }
+
+export interface ImgInputProps {
+  setImage: (url: string) => void;
+}
